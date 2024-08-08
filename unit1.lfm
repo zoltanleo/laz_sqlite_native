@@ -1,0 +1,67 @@
+object Form1: TForm1
+  Left = 683
+  Height = 340
+  Top = 264
+  Width = 662
+  Caption = 'Form1'
+  ClientHeight = 340
+  ClientWidth = 662
+  DesignTimePPI = 120
+  LCLVersion = '3.99.0.0'
+  OnCreate = FormCreate
+  OnShow = FormShow
+  object grConn: TDBGrid
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = Owner
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    AnchorSideBottom.Control = Owner
+    AnchorSideBottom.Side = asrBottom
+    Left = 10
+    Height = 320
+    Top = 10
+    Width = 642
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    AutoFillColumns = True
+    BorderSpacing.Around = 10
+    Color = clWindow
+    Columns = <>
+    DataSource = ds
+    Options = [dgEditing, dgTitles, dgIndicator, dgColumnResize, dgColumnMove, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgDisplayMemoText]
+    TabOrder = 0
+  end
+  object ds: TDataSource
+    DataSet = tmpQry
+    Left = 216
+    Top = 120
+  end
+  object tmpConn: TSQLite3Connection
+    Connected = False
+    LoginPrompt = False
+    KeepConnection = False
+    Transaction = tmpTrans
+    AlwaysUseBigint = False
+    Left = 105
+    Top = 102
+  end
+  object LibLoader: TSQLDBLibraryLoader
+    Enabled = False
+    ConnectionType = 'SQLite3'
+    Left = 312
+    Top = 112
+  end
+  object tmpTrans: TSQLTransaction
+    Active = False
+    Database = tmpConn
+    Left = 183
+    Top = 28
+  end
+  object tmpQry: TSQLQuery
+    FieldDefs = <>
+    Database = tmpConn
+    Transaction = tmpTrans
+    Options = [sqoAutoCommit]
+    Left = 289
+    Top = 28
+  end
+end
